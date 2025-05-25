@@ -10,6 +10,8 @@ import DownloadApp from "../../Sections/DownloadApp/DownloadApp";
 import FAQs from "../../Sections/FAQs/FAQs";
 import Blogs from "../../Sections/Blogs/Blogs";
 import OurFamilies from "../../Sections/OurFamilies/OurFamilies";
+import Specialists from "../../Sections/Specialists/Specialists";
+import PatientCaring from "../../Sections/PatientCaring/PatientCaring";
 
 
 
@@ -57,6 +59,9 @@ export default function Home() {
       <Offers/>
 
       <Specialization/>
+
+      <Specialists/>
+      <PatientCaring/>
    <Blogs/>
    <OurFamilies/>
     
