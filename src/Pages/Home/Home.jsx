@@ -4,6 +4,11 @@ import HeroSlider from "../../Components/HeroSlider/HeroSlider";
 import SearchHospital from "../../Components/SearchHostital/SearchHospital";
 
 import ServicesIcon from "../../Components/ServicesIcon/ServicesIcon";
+import Offers from "../../Components/offers/Offers";
+import Specialization from "../../Components/Specialization/Specialization";
+import DownloadApp from "../../Sections/DownloadApp/DownloadApp";
+import FAQs from "../../Sections/FAQs/FAQs";
+import Blogs from "../../Sections/Blogs/Blogs";
 
 
 
@@ -48,7 +53,16 @@ export default function Home() {
        
       </Box>
 
+      <Offers/>
+
+      <Specialization/>
+   <Blogs/>
+    
+      <FAQs/>
+        <DownloadApp/>
+
       {/* <Offers />
+      
 
       <Specialization />
 
@@ -61,6 +75,10 @@ export default function Home() {
       <OurFamilies />
 
       <FAQs /> */}
+
+
+
+
     </Box>
   );
 }
