@@ -9,6 +9,7 @@ import Specialization from "../../Components/Specialization/Specialization";
 import DownloadApp from "../../Sections/DownloadApp/DownloadApp";
 import FAQs from "../../Sections/FAQs/FAQs";
 import Blogs from "../../Sections/Blogs/Blogs";
+import OurFamilies from "../../Sections/OurFamilies/OurFamilies";
 
 
 
@@ -57,6 +58,7 @@ export default function Home() {
 
       <Specialization/>
    <Blogs/>
+   <OurFamilies/>
     
       <FAQs/>
         <DownloadApp/>
