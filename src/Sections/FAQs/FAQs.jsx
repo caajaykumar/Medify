@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Container, Row, Col } from 'react-bootstrap';
 
 import faqBanner from '../../assets/faqs-banner.jpg';
 import CustomizedAccordions from "../../Components/Accordion/Accordion";
@@ -26,35 +26,35 @@ const FAQs = () => {
     ]
 
   return (
-   <Box py={4}>
-            <Container maxWidth='xl'>
-                <Typography color='primary.main' fontWeight={600} textAlign='center'>
-                    Get Your Answer
-                </Typography>
-                <Typography textAlign='center' variant='h2' mb={2}>
-                    Frequently Asked Questions
-                </Typography>
-                <Grid container alignItems='center' spacing={5}>
+   <div style={{ paddingTop: "40px", paddingBottom: "40px" }}>
+            <Container fluid="xl">
+                <p style={{ color: "#0d6efd", fontWeight: 600, textAlign: "center" }}>
+          Get Your Answer
+        </p>
+        <h2 style={{ textAlign: "center", marginBottom: "16px" }}>
+          Frequently Asked Questions
+        </h2>
+                <Row className="align-items-center" style={{ rowGap: "24px" }}>
 
-                    <Grid item xs={12} md={6}>
-                        <Box
-                            src={faqBanner}
-                            component='img'
-                            width={1}
-                            height='auto'
-                        />
-                    </Grid>
+                    <Col xs={12} md={6}>
+                       <img
+              src={faqBanner}
+              alt="FAQ Banner"
+              style={{ width: "100%", height: "auto" }}
+            />
+                    </Col>
 
-                    <Grid item xs={12} md={6}>
-                        <Box maxWidth={450}>
+                    <Col xs={12} md={6}>
+                        <div style={{ maxWidth: "450px" }}>
                            
                             <CustomizedAccordions data={faqs}/>
-                        </Box>
-                    </Grid>
 
-                </Grid>
+                        </div>
+                    </Col>
+
+                </Row>
             </Container>
-        </Box>
+        </div>
   )
 }
 

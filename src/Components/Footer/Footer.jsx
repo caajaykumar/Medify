@@ -68,7 +68,7 @@ export default function Footer() {
 
         <Row>
           <Col className="text-center py-3">
-            <p className="mb-0">Copyright ©2023 Surya Nursing Home.com. All Rights Reserved</p>
+            <p className="mb-0">Copyright ©2025 Surya Nursing Home.com. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>

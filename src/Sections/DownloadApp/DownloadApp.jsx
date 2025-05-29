@@ -1,9 +1,4 @@
-
-// import mobile from "../../../assets/mobile.jpg";
-// import playstore from "../../../assets/playstore.png";
-// import apple from "../../../assets/apple-logo.png";
-// import arrow from "../../../assets/down-arr.png";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Container, Row, Col } from "react-bootstrap";
 
 import mobile from '../../assets/mobile.jpg';
 import playstore from '../../assets/playstore.png';
@@ -11,100 +6,70 @@ import apple from '../../assets/apple-logo.png';
 import arrow from '../../assets/down-arr.png';
 import SmsForm from "./SmsForm";
 
-
-
-
-
-
-
 const DownloadApp = () => {
-  
-
-
-
-
   return (
-    <> 
- <Box
-      sx={{ background: "linear-gradient(#E7F0FF 100%, #E8F1FF 47%)", pt: 5 }}
-    >
-      <Container>
-        <Grid container spacing={3} alignItems="center">
-          <Grid item xs={12} md={5.5}>
-            <Box src={mobile} component="img" width={1} height="auto" />
-          </Grid>
+    <>
+      <div style={{ background: "linear-gradient(#E7F0FF 100%, #E8F1FF 47%)", paddingTop: '40px' }}>
+        <Container>
+          <Row className="align-items-center">
+            <Col xs={12} md={6}>
+              <img src={mobile} alt="mobile" style={{ width: "100%", height: "auto" }} />
+            </Col>
 
-          <Grid item xs={12} md={6.5}>
-            <Box
-              position="relative"
-              pl={{ xs: "36px", md: "50px" }}
-              mb={{ xs: 4, md: 0 }}
-            >
-              <Typography variant="h2" mb={2}>
-                Download the
-                <br />
-                <Box component="span" color="primary.main">
-                  Medify{" "}
-                </Box>
-                App
-              </Typography>
+            <Col xs={12} md={6}>
+              <div style={{ position: "relative", paddingLeft: "50px", marginBottom: "30px" }}>
+                <h2 style={{ marginBottom: "16px" }}>
+                  Download the <br />
+                  <span style={{ color: "#0d6efd" }}>Medify </span>App
+                </h2>
 
-              <Box
-                src={arrow}
-                component="img"
-                width={{ xs: 24, md: 40 }}
-                position="absolute"
-                left={0}
-                top={50}
-              />
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  style={{ width: "40px", position: "absolute", left: 0, top: "50px" }}
+                />
 
-              {/* <SmsForm /> */}
-              <SmsForm/>
+                <SmsForm />
 
-
-              <Stack
-                direction={{ xs: "column", md: "row" }}
-                spacing={{ xs: 1, md: 2 }}
-              >
-                <Button
-                  sx={{
-                    bgcolor: "#333",
-                    color: "#fff",
-                    py: 1.5,
-                    borderRadius: 1.5,
-                  }}
-                  size={"large"}
-                  startIcon={<img src={playstore} height={24} />}
-                  variant="contained"
-                  disableElevation
-                >
-                  Google Play
-                </Button>
-                <Button
-                  sx={{
-                    bgcolor: "#333",
-                    color: "#fff",
-                    py: 1.5,
-                    borderRadius: 1.5,
-                  }}
-                  size="large"
-                  startIcon={<img src={apple} height={24} />}
-                  variant="contained"
-                  disableElevation
-                >
-                  App Store
-                </Button>
-              </Stack>
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
+                <div className="d-flex flex-column flex-md-row gap-2 mt-3">
+                  <button
+                    style={{
+                      backgroundColor: "#333",
+                      color: "#fff",
+                      padding: "12px",
+                      borderRadius: "12px",
+                      border: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px"
+                    }}
+                  >
+                    <img src={playstore} height={24} alt="playstore" />
+                    Google Play
+                  </button>
+                  <button
+                    style={{
+                      backgroundColor: "#333",
+                      color: "#fff",
+                      padding: "12px",
+                      borderRadius: "12px",
+                      border: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px"
+                    }}
+                  >
+                    <img src={apple} height={24} alt="apple" />
+                    App Store
+                  </button>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </>
+  );
+};
 
-
-    
-  )
-}
-
-export default DownloadApp
+export default DownloadApp;
