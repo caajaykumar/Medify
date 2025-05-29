@@ -1,31 +1,32 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
-import BlogCard from "./BlogCard";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import BlogCard from './BlogCard';
 
 const Blogs = () => {
   return (
-   <Box py={6}>
+    <div className="py-5">
       <Container>
-        <Typography color="primary.main" fontWeight={600} textAlign="center" gutterBottom>
+        <h6 className="text-primary fw-semibold text-center mb-2">
           Blog & News
-        </Typography>
-        <Typography textAlign="center" variant="h4" fontWeight={700} mb={4}>
+        </h6>
+        <h4 className="text-center fw-bold mb-4">
           Read Our Latest News
-        </Typography>
+        </h4>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4}>
+        <Row className="g-4">
+          <Col xs={12} sm={6} md={4}>
             <BlogCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          </Col>
+          <Col xs={12} sm={6} md={4}>
             <BlogCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          </Col>
+          <Col xs={12} sm={6} md={4}>
             <BlogCard />
-          </Grid>
-        </Grid>
+          </Col>
+        </Row>
       </Container>
-    </Box>
-  )
-}
+    </div>
+  );
+};
 
-export default Blogs
+export default Blogs;
