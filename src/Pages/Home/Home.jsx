@@ -29,11 +29,11 @@ export default function Home() {
         }}
         mb={4}
       >
-   <Header/>
-     <Container maxWidth="xl">
-         <HeroSlider/>
+        <Header />
+        <Container maxWidth="xl">
+          <HeroSlider />
 
-       <Stack
+          <Stack
             p={{ xs: 2.5, md: 8 }}
             mt={{ xs: -2, md: 0, lg: -6, xl: -10 }}
             position="relative"
@@ -45,46 +45,33 @@ export default function Home() {
           >
 
 
-         <SearchHospital/>
+            <SearchHospital />
 
 
-        <ServicesIcon/>
+            <ServicesIcon />
 
 
-         </Stack>
-         
+          </Stack>
+
         </Container>
 
 
-       
+
       </Box>
 
-      <Offers/>
-
-      <Specialization/>
-
-      <Specialists/>
-      <PatientCaring/>
-   <Blogs/>
-   <OurFamilies/>
-    
-      <FAQs/>
-        <DownloadApp/>
-
-      {/* <Offers />
-      
+      <Offers />
 
       <Specialization />
 
       <Specialists />
-
       <PatientCaring />
-
       <Blogs />
-
       <OurFamilies />
 
-      <FAQs /> */}
+      <FAQs />
+      <DownloadApp />
+
+
 
 
 
