@@ -97,6 +97,8 @@ const MyBooking = () => {
             <img src={cta} width={360} height="auto" alt="Call to Action" />
           </Stack>
         </Container>
+
+        <DownloadApp/>
       </Box>
     </>
   );

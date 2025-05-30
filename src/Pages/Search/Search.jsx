@@ -12,7 +12,8 @@ import BookingModal from "../../Components/BookingModal/BookingModal";
 import AutohideSnackbar from "../../Components/AutohideSnackbar/AutohideSnackbar";
 
 import Header from "../../Components/Header/Header";
-const Search = () => { const [seachParams, setSearchParams] = useSearchParams();
+const Search = () => {
+   const [seachParams, setSearchParams] = useSearchParams();
   const [hospitals, setHospitals] = useState([]);
   const [state, setState] = useState(seachParams.get("state"));
   const [city, setCity] = useState(seachParams.get("city"));
@@ -104,8 +105,8 @@ const Search = () => { const [seachParams, setSearchParams] = useSearchParams();
               >
                 {`${hospitals.length} medical centers available in `}
                 <span style={{ textTransform: "capitalize" }}>
-  {city?.toLocaleLowerCase() || ""}
-</span>
+                  {city.toLocaleLowerCase()}
+                </span>
               </Typography>
               <Stack direction="row" spacing={2}>
                 <img src={icon} height={24} width={24} alt="icon" />

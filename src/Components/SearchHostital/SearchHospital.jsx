@@ -8,9 +8,9 @@ const SearchHospital = () => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({ state: "", city: "" });
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-     useEffect(() => {
+  useEffect(() => {
     const fetchStates = async () => {
       try {
         const response = await axios.get(
@@ -25,7 +25,6 @@ const SearchHospital = () => {
     fetchStates();
   }, []);
 
-
   useEffect(() => {
     const fetchCities = async () => {
       setCities([]);
@@ -35,35 +34,32 @@ const SearchHospital = () => {
           `https://meddata-backend.onrender.com/cities/${formData.state}`
         );
         setCities(data.data);
-        // console.log("city", data.data);
       } catch (error) {
-        console.log("Error in fetching city:", error);
+        console.error("Error fetching cities:", error);
       }
     };
 
-    if (formData.state != "") {
+    if (formData.state !== "") {
       fetchCities();
     }
   }, [formData.state]);
 
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.state && formData.city) {
       navigate(`/search?state=${formData.state}&city=${formData.city}`);
     }
   };
 
-
   return (
-    <>
-     <Box
+    <Box
       component="form"
-     onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       sx={{
         display: "flex",
         gap: 4,
@@ -85,8 +81,8 @@ const SearchHospital = () => {
         required
         sx={{ minWidth: 200, width: "100%" }}
       >
-        <MenuItem disabled value="" selected>
-          State
+        <MenuItem disabled value="">
+           State
         </MenuItem>
         {states.map((state) => (
           <MenuItem key={state} value={state}>
@@ -107,9 +103,10 @@ const SearchHospital = () => {
           </InputAdornment>
         }
         required
+        disabled={!formData.state || cities.length === 0}
         sx={{ minWidth: 200, width: "100%" }}
       >
-        <MenuItem disabled value="" selected>
+        <MenuItem disabled value="">
           City
         </MenuItem>
         {cities.map((city) => (
@@ -130,11 +127,7 @@ const SearchHospital = () => {
         Search
       </Button>
     </Box>
-    
-    
-    
-     </>
-  )
-}
+  );
+};
 
-export default SearchHospital
+export default SearchHospital;
