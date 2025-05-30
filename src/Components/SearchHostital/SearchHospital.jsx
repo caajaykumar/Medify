@@ -1,13 +1,69 @@
 import { MenuItem, Select, Button, InputAdornment, Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const SearchHospital = () => {
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [formData, setFormData] = useState({ state: "", city: "" });
+    const navigate = useNavigate();
+
+     useEffect(() => {
+    const fetchStates = async () => {
+      try {
+        const response = await axios.get(
+          "https://meddata-backend.onrender.com/states"
+        );
+        setStates(response.data);
+      } catch (error) {
+        console.error("Error fetching states:", error);
+      }
+    };
+
+    fetchStates();
+  }, []);
+
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      setCities([]);
+      setFormData((prev) => ({ ...prev, city: "" }));
+      try {
+        const data = await axios.get(
+          `https://meddata-backend.onrender.com/cities/${formData.state}`
+        );
+        setCities(data.data);
+        // console.log("city", data.data);
+      } catch (error) {
+        console.log("Error in fetching city:", error);
+      }
+    };
+
+    if (formData.state != "") {
+      fetchCities();
+    }
+  }, [formData.state]);
+
+    const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+    const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.state && formData.city) {
+      navigate(`/search?state=${formData.state}&city=${formData.city}`);
+    }
+  };
+
+
   return (
     <>
      <Box
       component="form"
-    //   onSubmit={handleSubmit}
+     onSubmit={handleSubmit}
       sx={{
         display: "flex",
         gap: 4,
@@ -19,8 +75,8 @@ const SearchHospital = () => {
         displayEmpty
         id="state"
         name="state"
-        // value={formData.state}
-        // onChange={handleChange}
+        value={formData.state}
+        onChange={handleChange}
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
@@ -32,35 +88,35 @@ const SearchHospital = () => {
         <MenuItem disabled value="" selected>
           State
         </MenuItem>
-        {/* {states.map((state) => (
+        {states.map((state) => (
           <MenuItem key={state} value={state}>
             {state}
           </MenuItem>
-        ))} */}
+        ))}
       </Select>
 
       <Select
         displayEmpty
         id="city"
         name="city"
-        // value={formData.city}
-        // onChange={handleChange}
-        // startAdornment={
-        //   <InputAdornment position="start">
-        //     <SearchIcon />
-        //   </InputAdornment>
-        // }
+        value={formData.city}
+        onChange={handleChange}
+        startAdornment={
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        }
         required
         sx={{ minWidth: 200, width: "100%" }}
       >
         <MenuItem disabled value="" selected>
           City
         </MenuItem>
-        {/* {cities.map((city) => (
+        {cities.map((city) => (
           <MenuItem key={city} value={city}>
             {city}
           </MenuItem>
-        ))} */}
+        ))}
       </Select>
 
       <Button
