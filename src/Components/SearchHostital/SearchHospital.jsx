@@ -67,6 +67,8 @@ const SearchHospital = () => {
         flexDirection: { xs: "column", md: "row" },
       }}
     >
+
+      <div>
       <Select
         displayEmpty
          inputProps={{ 'data-testid': 'state-select' }}
@@ -91,7 +93,8 @@ const SearchHospital = () => {
           </MenuItem>
         ))}
       </Select>
-
+      </div>
+<div>
       <Select
         displayEmpty
        inputProps={{ 'data-testid': 'city-select' }}
@@ -117,7 +120,7 @@ const SearchHospital = () => {
           </MenuItem>
         ))}
       </Select>
-
+</div>
       <Button
         type="submit"
         variant="contained"
