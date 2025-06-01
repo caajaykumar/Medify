@@ -7,28 +7,27 @@ import HospitalCard from "../../Components/HospitalCard/HospitalCard";
 import cta from "../../assets/cta.png";
 
 const MyBooking = () => {
+  
   const [bookings, setBookings] = useState([]);
   const [filteredBookings, setFilteredBookings] = useState([]);
 
   useEffect(() => {
-    try {
-      const localBookings = localStorage.getItem("bookings");
-      setBookings(localBookings ? JSON.parse(localBookings) : []);
-    } catch (err) {
-      console.error("Invalid data in localStorage for 'bookings'", err);
-      setBookings([]); // fallback to empty array
-    }
+    const localBookings = localStorage.getItem("bookings") || "[]";
+    setBookings(JSON.parse(localBookings));
   }, []);
 
   useEffect(() => {
     setFilteredBookings(bookings);
   }, [bookings]);
 
+  //Separate page/component to render all the booked hospitals of user alogwith chosen date and time slot
+  //It utilises HospitalCard component to generate the cards with data
   return (
     <>
       <Header />
-      <Box sx={{ background: "linear-gradient(#EFF5FE, rgba(241,247,255,0.47))" }}>
-        {/* Header Section */}
+      <Box
+        sx={{ background: "linear-gradient(#EFF5FE, rgba(241,247,255,0.47))" }}
+      >
         <Box
           mb="50px"
           pt={{ xs: 3, md: 1 }}
@@ -69,7 +68,6 @@ const MyBooking = () => {
           </Container>
         </Box>
 
-        {/* Bookings Display Section */}
         <Container maxWidth="xl" sx={{ pt: 8, pb: 10, px: { xs: 0, md: 4 } }}>
           <Stack alignItems="flex-start" direction={{ md: "row" }}>
             <Stack
@@ -78,27 +76,25 @@ const MyBooking = () => {
               width={{ xs: 1, md: "calc(100% - 384px)" }}
               mr="24px"
             >
-              {filteredBookings.length > 0 ? (
-                filteredBookings.map((hospital, index) => (
+              {filteredBookings.length > 0 &&
+                filteredBookings.map((hospital) => (
                   <HospitalCard
-                    key={hospital["Hospital Name"] || index}
+                    key={hospital["Hospital Name"]}
                     details={hospital}
                     booking={true}
                   />
-                ))
-              ) : (
+                ))}
+
+              {filteredBookings.length == 0 && (
                 <Typography variant="h3" bgcolor="#fff" p={3} borderRadius={2}>
                   No Bookings Found!
                 </Typography>
               )}
             </Stack>
 
-            {/* CTA Image */}
-            <img src={cta} width={360} height="auto" alt="Call to Action" />
+            <img src={cta} width={360} height="auto" />
           </Stack>
         </Container>
-
-        <DownloadApp/>
       </Box>
     </>
   );

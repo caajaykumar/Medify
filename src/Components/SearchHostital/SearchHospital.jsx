@@ -69,6 +69,7 @@ const SearchHospital = () => {
     >
       <Select
         displayEmpty
+         inputProps={{ 'data-testid': 'state-select' }}
         id="state"
         name="state"
         value={formData.state}
@@ -93,6 +94,7 @@ const SearchHospital = () => {
 
       <Select
         displayEmpty
+       inputProps={{ 'data-testid': 'city-select' }}
         id="city"
         name="city"
         value={formData.city}

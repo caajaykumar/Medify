@@ -143,7 +143,7 @@ const Search = () => {
 
               {!state && (
                 <Typography variant="h3" bgcolor="#fff" p={3} borderRadius={2}>
-                  Please select a state and city
+                  Please Select a State and City
                 </Typography>
               )}
             </Stack>
